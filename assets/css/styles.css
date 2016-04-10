@@ -1,0 +1,23 @@
+body {
+	color: white;
+	background-color: #333;
+	width: 100%;
+	min-height:100%;
+}
+
+.block {
+	background-color: white;
+	color: #333;
+	border-radius: 20px;
+	margin-bottom: 2%;
+}
+
+.block h2 {
+	text-align: center;
+}
+
+nav {
+	text-align: center;
+}
+
+

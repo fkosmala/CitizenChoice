@@ -1,0 +1,77 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" media="all" href="/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/js/socket.io.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script>
+        var socket = io.connect();
+        function close(){
+			$("#myModal").modal("hide");
+			socket.emit('unvote');
+		}
+        socket.on('vote', function (data) {
+            $("#myModal").modal("show");
+            setTimeout(close, 10000);
+        });
+    </script>
+    <style>
+    	body {
+    		width: 100%;
+    	}
+    	#content {
+    		width: 100%;
+    		min-height: 100%;
+    		height: 100%;
+    		margin: 0 auto;
+    	}
+    	.item {
+			position: relative;
+			display: table; 
+			text-align: center;
+			width: 100%;
+			height: 100%;  
+			font-family: arial, sans-serif;
+			font-size: 4em;
+			color: #333;
+		}
+		.item div{
+			display: table-cell; 
+			vertical-align: middle; 
+			text-align: center; 
+		}
+		.modal-title {
+			font-size: 8em;
+			text-align: center;
+		}
+		.modal-body {
+			font-size: 3em;
+			text-align: center;
+		}
+	</style>
+</head> 
+ 
+<body>
+<div id="content">
+	<div class="item">
+		<div><%= question %></div>
+	</div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Merci !</h1>
+      </div>
+      <div class="modal-body">
+        <p>Votre participation a bien été prise en compte :)</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>CitizenChoice Administration</title>
+	<link rel="stylesheet" type="text/css" media="all" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" />
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head> 
+<body>
+<nav class="navbar navbar-default">
+	<img src="/logo.png" alt="Logo CitizenChoice" style="height: 120px;">
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div class="block col-md-10 col-md-offset-1">
+			<h2>Ajouter une question</h2>
+			<form method="post" action="/post_question" role="form">
+			  <div class="form-group col-md-11">
+				<input type="text" class="form-control" id="inputQuestion" name="inputQuestion" placeholder="Question">
+			  </div>
+			  <div class="col-md-1">
+				<button type="submit" class="btn btn-primary">Ajouter</button>
+			  </div>
+			</form>
+		</div>
+		
+		<div class="block col-md-10 col-md-offset-1">
+			<h2>Liste des sondages</h2>
+			<table class="table table-striped table-bordered">
+			  <thead class="thead">
+				<tr>
+					<th>#</th>
+					<th>Titre de la question</th>
+					<th class="success">Nombre de OUI</th>
+					<th class="danger ">Nombre de NON</th>
+					<th>Total des votes :</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<% questions.forEach(function(row) { %>
+					<tr>
+						<th scope="row"><%= row.id %></th>
+						<td><%= row.title %></td>
+						<td><%= row.nbYes %> (<%= ((row.nbYes*100) / (row.nbYes + row.nbNo))%> %)</td>
+						<td><%= row.nbNo %> (<%= ((row.nbNo*100) / (row.nbYes + row.nbNo))%> %)</td>
+						<td><%= (row.nbYes + row.nbNo) %></td>
+					</tr>
+				<% }); %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
