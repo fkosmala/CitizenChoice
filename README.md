@@ -15,6 +15,8 @@ Une parti d'administration permet l'ajout de question et la vision des statistiq
 ## Installation
 
 * Préparer la carte SD avec Raspbian (Version testée : 2016-03-18)
+* Câblez les boutons comme le schéma ci-dessous :
+![Wiring Citizen Choice](http://www.soyez-heureux.com/CitizenChoice.jpg  "Wiring Citizen Choice")
 * Une fois le raspberry Pi lancé, lancez le terminal et exécutez ces commandes :
 ```
 curl -sLS https://apt.adafruit.com/add | sudo bash
